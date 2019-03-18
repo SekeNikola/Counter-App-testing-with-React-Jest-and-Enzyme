@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
+  // const [counter, setCounter] = useState(0)
+
+  state = { counter: 0 };
   render() {
     return (
       <div className="App" data-test="component-app">
