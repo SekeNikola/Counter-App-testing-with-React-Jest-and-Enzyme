@@ -7,19 +7,15 @@ import {
 } from 'enzyme';
 import App from './App';
 
-import Enzyme from 'enzyme'
-import EnzymeAdapter from 'enzyme-adapter-react-16'
 
-Enzyme.configure({
-  adapter: new EnzymeAdapter(),
-  disableLifecycleMethods: true
-});
-
-const setUp = (props = {}) => {
+const setUp = (props = {}, state = null) => {
     const component = shallow( < App {
         ...props
       }
       / > );
+      if (state) component.setState({
+        state
+      })
       return component;
     };
 
@@ -48,6 +44,14 @@ const setUp = (props = {}) => {
       });
 
       it('Click Should increment Counter', () => {
-
+        const counter = 0;
+        const component = setUp(null, {
+          counter
+        });
+        const button = findByTestAttr(component, 'increment-button');
+        button.simulate('click');
+        component.update();
+        const counterRender = findByTestAttr(component, 'counter-render');
+        expect(counterRender.text()).toContain(counter + 1)
       })
     })
