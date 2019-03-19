@@ -12,3 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+button {
+  margin: 10px
+}
+
+.error {
+  font-size: 150%;
+  color: red;
+}
+
+/* for challenge #2 and #3 to show / hide error message */
+.hidden {
+  display: none;
+}
